@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Real-Time Weather App</string>
+    <string name="celsius">°C</string>
+    <string name="percentage">%</string>
+    <string name="_15">15°</string>
+    <string name="_20">20%</string>
+    <string name="_22_c">22°C</string>
+    <string name="feels_like">feels like</string>
+    <string name="tel_aviv">Tel Aviv</string>
+    <string name="image_weather">image weather</string>
+    <string name="humidity">humidity</string>
+    <string name="pressure">pressure</string>
+    <string name="forecast">forecast</string>
+    <string name="wind">Wind</string>
+</resources>
