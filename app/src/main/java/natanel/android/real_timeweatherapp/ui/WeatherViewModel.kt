@@ -11,7 +11,6 @@ import kotlinx.coroutines.withContext
 import natanel.android.real_timeweatherapp.service.api.ApiService
 import natanel.android.real_timeweatherapp.service.model.current_weather.CurrentWeatherResponse
 import natanel.android.real_timeweatherapp.service.model.forecast_weather.ForecastItem
-import natanel.android.real_timeweatherapp.service.model.forecast_weather.ForecastResponse
 import natanel.android.real_timeweatherapp.service.model.forecast_weather.forecastData.ForecastItemData
 import natanel.android.real_timeweatherapp.service.model.forecast_weather.forecastData.toForecastItemData
 import java.text.SimpleDateFormat
@@ -22,14 +21,14 @@ import kotlin.math.roundToInt
 
 class WeatherViewModel : ViewModel() {
 
-    private val _currentWeather = MutableLiveData<CurrentWeatherResponse>()
-    val currentWeather: LiveData<CurrentWeatherResponse> = _currentWeather
+    private val _currentWeather = MutableLiveData<CurrentWeatherResponse?>(null)
+    val currentWeather: LiveData<CurrentWeatherResponse?> = _currentWeather
 
-    private val _forecast = MutableLiveData<List<ForecastItemData>>()
+    private val _forecast = MutableLiveData<List<ForecastItemData>>(listOf())
     val forecast: LiveData<List<ForecastItemData>> = _forecast
 
     //error for catching problems with the api
-    private val _error = MutableLiveData<String?>()
+    private val _error = MutableLiveData<String?>(null)
     val error: LiveData<String?> = _error
 
     init {
@@ -45,7 +44,8 @@ class WeatherViewModel : ViewModel() {
                     _currentWeather.postValue(result)
                 }
             } catch (e: Exception) {
-                _error.value = "Failed to fetch current weather. Please try again later."
+                _error.postValue("Failed to fetch current weather. Please try again later.")
+                Log.d("weather api error", "ERROR: " + e.message)
             }
         }
     }
@@ -60,7 +60,8 @@ class WeatherViewModel : ViewModel() {
                     _forecast.postValue(result)
                 }
             } catch (e: Exception) {
-                _error.value = "Failed to fetch forecast. Please try again later."
+                _error.postValue( "Failed to fetch forecast. Please try again later.")
+                Log.d("forecast api error", "ERROR: " + e.message)
             }
         }
     }
@@ -130,7 +131,8 @@ class WeatherViewModel : ViewModel() {
             return dayName;
 
         } catch (e: Exception) {
-            _error.value = "Failed to Parse Data. Please try again later."
+            _error.postValue("Failed to Parse Data. Please try again later.")
+            Log.d("parse error", "ERROR: " + e.message)
         }
         return dateStr
     }

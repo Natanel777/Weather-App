@@ -2,12 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/weatherFragment">
+    app:startDestination="@id/weatherMediatorFragment"
+    android:id="@+id/nav_graph">
 
     <fragment
-        android:id="@+id/weatherFragment"
-        android:name="natanel.android.real_timeweatherapp.ui.WeatherFragment"
-        android:label="fragment_weather"
-        tools:layout="@layout/fragment_weather" />
+        tools:layout="@layout/fragment_weather_mediator"
+        android:id="@+id/weatherMediatorFragment"
+        android:name="natanel.android.real_timeweatherapp.WeatherMediatorFragment"
+        android:label="WeatherMediatorFragment" />
 </navigation>

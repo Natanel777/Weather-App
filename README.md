@@ -24,6 +24,9 @@ The Real-Time Weather App fetches weather data from the OpenWeatherMap API to pr
 - **Different UI At Night**: Changes weather icons to reflect nighttime conditions, providing visual cues for weather conditions during nighttime hours.
 
 
+- **Error Handling**: Manages errors and network connectivity issues effectively. Includes a dedicated layout for displaying network error message
+
+
 ## Technologies Used
 * Kotlin.
 * MVVM Architecture.

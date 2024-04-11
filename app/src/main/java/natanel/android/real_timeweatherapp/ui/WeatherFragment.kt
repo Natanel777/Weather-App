@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -18,6 +21,18 @@ import java.util.Calendar
 import kotlin.math.roundToInt
 
 const val TAG = "api"
+
+
+fun  <T: Any> LiveData<T?>.observeNotNull(
+    owner: LifecycleOwner,
+    observer: Observer<in T>
+) {
+    observe(owner) {
+        if(it == null) return@observe
+        observer.onChanged(it)
+    }
+
+}
 
 class WeatherFragment : Fragment() {
 
@@ -42,12 +57,12 @@ class WeatherFragment : Fragment() {
         val weatherViewModel = ViewModelProvider(this)[WeatherViewModel::class.java]
 
         //Current Weather
-        weatherViewModel.currentWeather.observe(viewLifecycleOwner) { weather ->
-            if (weather != null) {
+        weatherViewModel.currentWeather.observeNotNull(viewLifecycleOwner) { weather ->
                 val celsius = getString(R.string.celsius)
                 val percentage = getString(R.string.percentage)
 
                 with(binding) {
+
                     locationText.text = weather.name // Location
                     weatherStatusText.text = weather.weather[0].main // status
                     tempText.text = weather.main.temp.roundToInt().toString() + celsius // temp
@@ -68,7 +83,7 @@ class WeatherFragment : Fragment() {
 
                     when (weather.weather[0].main) {
                         "Clear" -> {
-                            if (currentHour < 19) {
+                            if (currentHour in 6..19) {
                                 Picasso.get().load(R.drawable.sun).into(weatherMainImage)
                             } else {
                                 Picasso.get().load(R.drawable.moon).into(weatherMainImage)
@@ -76,7 +91,7 @@ class WeatherFragment : Fragment() {
                         }
 
                         "Clouds" -> {
-                            if (currentHour < 19) {
+                            if (currentHour in 6..19) {
                                 Picasso.get().load(R.drawable.clouds).into(weatherMainImage)
                             } else {
                                 Picasso.get().load(R.drawable.clouds_moon).into(weatherMainImage)
@@ -92,25 +107,20 @@ class WeatherFragment : Fragment() {
                             Picasso.get().load(R.drawable.sun).into(weatherMainImage)
                         }
                     }
-                }
             }
         }
         //Forecast
         weatherViewModel.forecast.observe(viewLifecycleOwner) { forecast ->
-            if (forecast != null) {
                 with(binding.foracstRecyclerView) {
                     adapter = ForecastAdapter(forecast)
                     layoutManager = LinearLayoutManager(context)
                 }
-            }
         }
 
         //error
-        weatherViewModel.error.observe(viewLifecycleOwner) { error ->
-            error?.let {
+        weatherViewModel.error.observeNotNull(viewLifecycleOwner) { error ->
                 // Handle error - Show an error message to the user
-                Snackbar.make(view, it + "Please Try Again", Snackbar.LENGTH_LONG).show()
-            }
+                Snackbar.make(view,  "$error Please Try Again", Snackbar.LENGTH_LONG).show()
         }
     }
 
