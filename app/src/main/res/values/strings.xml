@@ -12,4 +12,6 @@
     <string name="pressure">pressure</string>
     <string name="forecast">forecast</string>
     <string name="wind">Wind</string>
+    <string name="no_internet_connection_please_check_your_netwrok">No internet connection, Please check your netwrok.</string>
+    <string name="no_internet">no internet</string>
 </resources>

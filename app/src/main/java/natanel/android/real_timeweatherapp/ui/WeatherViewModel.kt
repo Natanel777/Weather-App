@@ -73,7 +73,7 @@ class WeatherViewModel : ViewModel() {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val currentDate = dateFormat.format(Date())
 
-        var tempMin: String = ""
+        var tempMin = ""
         var tempMax: String
         var weatherStatus: String
         var date: String

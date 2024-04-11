@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -19,9 +18,6 @@ import natanel.android.real_timeweatherapp.databinding.FragmentWeatherBinding
 import natanel.android.real_timeweatherapp.ui.adapter.ForecastAdapter
 import java.util.Calendar
 import kotlin.math.roundToInt
-
-const val TAG = "api"
-
 
 fun  <T: Any> LiveData<T?>.observeNotNull(
     owner: LifecycleOwner,

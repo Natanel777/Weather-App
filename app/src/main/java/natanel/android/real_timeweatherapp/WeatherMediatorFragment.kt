@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import natanel.android.real_timeweatherapp.R
 import natanel.android.real_timeweatherapp.databinding.FragmentWeatherMediatorBinding
 import natanel.android.real_timeweatherapp.utils.hasInternetConnection
 import natanel.android.real_timeweatherapp.ui.NoInternetFragment
