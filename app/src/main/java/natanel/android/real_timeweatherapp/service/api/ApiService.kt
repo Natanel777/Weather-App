@@ -12,18 +12,15 @@ interface ApiService {
 
     @GET("weather")
     suspend fun getCurrentWeather(
-        @Query("lat") lat:Double = 32.089870,
-        @Query("lon") lon:Double = 34.880450
-    ) : CurrentWeatherResponse
+        @Query("lat") lat: Double = 32.089870,
+        @Query("lon") lon: Double = 34.880450
+    ): CurrentWeatherResponse
 
     @GET("forecast")
     suspend fun getForecast(
-        @Query("lat") lat:Double = 32.089870,
-        @Query("lon") lon:Double = 34.880450
-    ) : ForecastResponse
-
-
-
+        @Query("lat") lat: Double = 32.089870,
+        @Query("lon") lon: Double = 34.880450
+    ): ForecastResponse
 
     companion object {
         fun create(): ApiService {
@@ -32,7 +29,6 @@ interface ApiService {
             val client = OkHttpClient.Builder()
                 .addInterceptor(TokenInterceptor())
                 .build()
-
 
             //use the client with retrofit
             return Retrofit.Builder()

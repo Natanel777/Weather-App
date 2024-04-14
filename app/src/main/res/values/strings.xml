@@ -14,4 +14,8 @@
     <string name="wind">Wind</string>
     <string name="no_internet_connection_please_check_your_netwrok">No internet connection, Please check your netwrok.</string>
     <string name="no_internet">no internet</string>
+    <string name="h">H:</string>
+    <string name="l">L:</string>
+    <string name="clouds">Clouds</string>
+    <string name="_5_day_forecast">5-DAY-FORECAST</string>
 </resources>

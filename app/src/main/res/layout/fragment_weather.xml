@@ -106,7 +106,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato_italic"
-        android:text="H:"
+        android:text="@string/h"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -121,7 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:fontFamily="@font/lato_italic"
-        android:text="L:"
+        android:text="@string/l"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -197,7 +197,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/spicy_rice"
-                        android:text="Feels Like"
+                        android:text="@string/feels_like"
                         android:textColor="#80FFFFFF"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
@@ -392,7 +392,8 @@
                         android:textAlignment="textStart"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/wind" />
+                        app:srcCompat="@drawable/wind"
+                        android:contentDescription="@string/wind" />
 
                     <TextView
                         android:id="@+id/windText"
@@ -435,7 +436,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/spicy_rice"
-                        android:text="Clouds"
+                        android:text="@string/clouds"
                         android:textColor="#80FFFFFF"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView333"
@@ -451,14 +452,15 @@
                         android:textAlignment="textStart"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/clouds_pre" />
+                        app:srcCompat="@drawable/clouds_pre"
+                        android:contentDescription="@string/clouds" />
 
                     <TextView
                         android:id="@+id/cloudsText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
-                        android:text="@string/_20"
+                        tools:text="@string/_20"
                         android:textColor="@color/white"
                         android:textSize="40sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -508,7 +510,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="5-DAY-FORECAST"
+                android:text="@string/_5_day_forecast"
                 android:textColor="#80FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView5"
